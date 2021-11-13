@@ -11,6 +11,8 @@ class Player:
         self.race = r
         self.clas = cl
         
+        self.languages = self.race.languages
+        
         self.ability_scores = {
             "Strength": None,
             "Dexterity": None,
@@ -54,6 +56,7 @@ class Player:
             "Stealth": None,
             "Survival": None}
         
+        self.passive_traits = {**self.race.passive_traits, **self.clas.passive_traits}
 #       self.inventory = i.Inventory
 #       self.rested = True
 
@@ -99,6 +102,7 @@ class Player:
         self.base_ability["Charisma"] = cha 
         self.update_stats()
     
+    
     def skill_check(self, skill, adv = None):
         if adv == 1:
             roll = d.d20.roll_adv()
@@ -109,6 +113,7 @@ class Player:
         else:
             roll = d.d20.roll()
             return roll + self.skills[skill]
+        
         
     def ability_check(self, skill, adv = None):
         if adv == 1:

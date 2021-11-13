@@ -13,6 +13,7 @@ class Race:
         self.size = None
         self.speed = None
         self.languages = None
+        self.passive_traits = None
         self.hp_modifier = 0
         
     def info(self):
@@ -28,10 +29,11 @@ class Race:
         print("Speed: " + str(self.speed) + "ft")
         print("Languages Known: " + ' '.join(self.languages))
 
+
 class SubRace(Race):
     def __init__(self, name, race):
         self.race = race.name
-        self.subrace = name
+        self.name = name
         self.ability_inc = race.ability_inc
         self.age_adult = race.age_adult
         self.lifespan = race.lifespan
